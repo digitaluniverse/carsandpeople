@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block content %}
+  <h1>{{person.name}}'s Cars </h1>
+
+
+
+    {% for cars in person.cars.all %}
+<h3> {{ cars.car_model }}</h3>
+
+      <li>
+              <img src="{% if cars.picture %}{{ cars.picture.url }}{% else %}
+      {% static "img/no_image.png" %}{% endif %}">
+
+      </li>
+
+    {% endfor %}
+
+
+{% endblock %}

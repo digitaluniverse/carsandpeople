@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block content %}
+  <h1>List of Cars</h1>
+  {% if car_list %}
+  <ul>
+    {% for cars in car_list %}
+      <li>
+        <a href="{{ cars.get_absolute_url }}">{{ cars.car_model }}</a> ({{cars.year}})
+      </li>
+      <br>
+      <img src="{% if cars.picture %}{{ cars.picture.url }}{% else %}
+      {% static "img/no_image.png" %}{% endif %}">
+
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no cars.</p>
+  {% endif %}       
+{% endblock %}
